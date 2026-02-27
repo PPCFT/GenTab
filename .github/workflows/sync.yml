@@ -13,14 +13,13 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.SYNC_TOKEN }}
-          persist-credentials: false # Ważne: zapobiega konfliktom tokenów
+          # Używamy domyślnego tokena do pobrania kodu
+          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: false
 
       - name: Push to PPCFT
         run: |
+          # Tutaj używamy Twojego SYNC_TOKEN do wysyłki
           git remote add destination https://x-access-token:${{ secrets.SYNC_TOKEN }}@github.com/PPCFT/GenTab.git
-          # Wymuszamy pobranie najświeższych danych z Twojego repo
           git fetch origin main
-          # Wypychamy HEAD (aktualny stan) bezpośrednio do main w organizacji
           git push destination HEAD:main --force --tags
-
