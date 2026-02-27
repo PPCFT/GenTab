@@ -1,5 +1,5 @@
 = Generator Tablicy Poglądowej Biegłego
-:author: Biegły Sądowy
+:author: Marcin Brzeziński
 :revdate: 2026-02-27
 :toc: left
 :toclevels: 3
@@ -20,8 +20,8 @@ Aplikacja umożliwia:
 == Wymagania
 
 * Przeglądarka: Google Chrome / Microsoft Edge (zalecane)
-* Połączenie internetowe (Tailwind CSS ładowany z CDN)
 * Brak serwera — aplikacja działa lokalnie z pliku `file://`
+* Brak połączenia internetowego — wszystkie zasoby są lokalne
 
 == Struktura dokumentu wyjściowego
 
@@ -192,9 +192,52 @@ Znaki `.` i `/` w sygnaturze zamieniane są na `-`.
 == Technologie
 
 * *HTML5* — struktura dokumentu, element `<canvas>`
-* *Tailwind CSS* (CDN) — stylowanie panelu kontrolnego
+* *Tailwind CSS v3* (lokalnie, plik `tailwind.min.css`) — stylowanie panelu kontrolnego
 * *Vanilla CSS* — stylowanie arkusza A4 i reguły drukowania (`@page`, `@media print`)
 * *Vanilla JavaScript* — logika interakcji, rendering canvasu, autouzupełnianie
+
+== Struktura plików
+
+[cols="2,3", options="header"]
+|===
+| Plik | Opis
+
+| `index.html`
+| Główna aplikacja — cała logika, layout i style inline
+
+| `tailwind.min.css`
+| Zbudowany i zminifikowany CSS z klas Tailwind użytych w `index.html`
+
+| `build-css.sh`
+| Skrypt do przebudowy `tailwind.min.css` po zmianach w HTML
+
+| `README.adoc`
+| Niniejsza dokumentacja
+|===
+
+== Przebudowa CSS (Tailwind)
+
+Aplikacja działa offline — plik `tailwind.min.css` zawiera tylko klasy faktycznie użyte w `index.html`. Jeśli dodasz lub zmienisz klasy Tailwind w HTML, musisz przebudować CSS.
+
+=== Wymagania
+
+* Node.js z `npx` (instalacja tymczasowa, bez stałych zależności)
+
+=== Uruchomienie
+
+[source,bash]
+----
+./build-css.sh
+----
+
+=== Co robi skrypt
+
+. Instaluje `tailwindcss@3` tymczasowo przez npm
+. Tworzy pliki konfiguracyjne (tymczasowe)
+. Skanuje `index.html` i generuje `tailwind.min.css` z użytymi klasami
+. Sprząta po sobie — usuwa `node_modules`, `package.json` i pliki tymczasowe
+
+Wynikowy `tailwind.min.css` należy commitować do repozytorium.
 
 == Licencja
 
