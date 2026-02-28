@@ -1,6 +1,6 @@
 = Generator Tablicy Poglądowej Biegłego
 :author: Marcin Brzeziński
-:revdate: 2026-02-27
+:revdate: 2026-02-28
 :url-app: https://ppcft.github.io/GenTab/
 :toc: left
 :toclevels: 3
