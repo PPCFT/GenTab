@@ -15,7 +15,7 @@ test.describe('GenTab - Testy Funkcjonalne', () => {
 
   test('Sidebar powinien być widoczny i zawierać nazwę aplikacji', async ({ page }) => {
     await expect(page.locator('.sidebar-header-name')).toHaveText('GenTab');
-    await expect(page.locator('.sidebar-header-version')).toHaveText('v0.2.0');
+    await expect(page.locator('.sidebar-header-version')).toHaveText('v0.2.1');
   });
 
   test('Przycisk GitHub powinien mieć poprawny link', async ({ page }) => {
