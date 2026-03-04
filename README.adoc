@@ -7,7 +7,7 @@
 :icons: font
 :source-highlighter: highlight.js
 
-image:https://img.shields.io/badge/version-v0.2.0-brightgreen[Version]
+image:https://img.shields.io/badge/version-v0.2.2-brightgreen[Version]
 image:https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey[Platform]
 image:https://img.shields.io/badge/license-CC%20BY--NC%204.0-blue?logo=creativecommons&logoColor=white[License,link=https://creativecommons.org/licenses/by-nc/4.0/]
 image:https://img.shields.io/badge/GitHub-GenTab-181717?logo=github&logoColor=white[GitHub,link=https://github.com/PPCFT/GenTab]
@@ -335,9 +335,19 @@ Znaki `.` i `/` w sygnaturze zamieniane są na `-`.
 | `build-css.sh`
 | Skrypt do przebudowy `tailwind.min.css` po zmianach w HTML
 
-| `README.adoc`
-| Niniejsza dokumentacja
+| `.agents/workflows/version.md`
+| Instrukcja automatycznej aktualizacji wersji
+
+| `.agents/workflows/update-offline.md`
+| Instrukcja synchronizacji wersji offline
 |===
+
+== Automatyzacja (Workflows)
+
+Aplikacja wspiera zautomatyzowane procedury (wszystkie znajdują się w katalogu `.agents/workflows/`):
+
+* `/version` — aktualizuje wersję we wszystkich plikach (HTML, Testy, README) oraz datę rewizji.
+* `/update-offline` — synchronizuje `index-offline.html` z `index.html` i przebudowuje Tailwind CSS.
 
 == Przebudowa CSS (Tailwind)
 

@@ -32,3 +32,9 @@ git push origin --tags
 ---
 ### Najczęstszy błąd
 Wykonanie samego `git push origin --tags` wysyła tylko informację o wersji, ale **nie wysyła kodu**. Zawsze pamiętaj o `git push origin main`.
+
+# 1. Usuń tag lokalnie na komputerze
+git tag -d v1.0.1
+
+# 2. Usuń tag z serwera GitHub (twoje konto)
+git push origin --delete v1.0.1
